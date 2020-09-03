@@ -33,7 +33,7 @@ NOTE: In the future versions, I'll put everything on a container in order to eas
     NOTE: The instructions are based from <a href="https://devmarketer.io/learn/setup-laravel-project-cloned-github-com/">this site</a> to make it work on a fresh cloned repository, and everything is made with a console. If you are running on windows, you can use the git console.
 </div>
 <h4>1: Go to the DocumentRoot folder where you are going to start</h4>
-<pre>cd  [your_document_root] <pre>
+<pre>cd  [your_document_root] </pre>
 
 <h4>2: Clone the repository</h4>
 <pre>git clone git@github.com:demenskan/demensWallet</pre>
