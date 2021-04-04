@@ -18,8 +18,25 @@ class CreateCategoriesTable extends Migration
             $table->string('parent_id')->nullable();
             $table->string('user_id');
             $table->string('name');
+            $table->enum('type', ['IN','OUT']);
             $table->timestamps();
         });
+        DB::table('categories')->insert(
+            [[
+                'id' => '0000-0000-0000-0000-0000',
+                'parent_id' => Null,
+                'user_id' => '0000-0000-0000-0000-0000',
+                'name' => 'Rent',
+                'type' => 'OUT',
+            ],
+            [
+                'id' => '0000-0000-0000-0000-0001',
+                'parent_id' => Null,
+                'user_id' => '0000-0000-0000-0000-0000',
+                'name' => 'Wage',
+                'type' => 'IN',
+            ]]
+        );
     }
 
     /**

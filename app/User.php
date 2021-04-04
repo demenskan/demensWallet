@@ -41,4 +41,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function resources() {
+        return $this->hasMany('App\Resource', 'owner_id');   //<-- 2nd parameter is the foreign key. by default is model_name + '_id'
+    }
+
+    public function categories() {
+        return $this->hasMany('App\Category');
+    }
+
+    public function categoriesIncome() {
+        return $this->hasMany('App\Category')->where('type', 'IN');
+    }
+
+    public function categoriesOutcome() {
+        return $this->hasMany('App\Category')->where('type', 'OUT');
+    }
+
+    public function transactions() {
+        return $this->hasMany('App\Transaction');
+    }
+
 }

@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Resource_type extends Model
+class Icon extends Model
 {
     //
-    protected $keyType="string";
 }

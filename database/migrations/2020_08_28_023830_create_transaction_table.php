@@ -15,12 +15,16 @@ class CreateTransactionTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('origin_id');
-            $table->string('destiny_id');
+            $table->string('resource_id');
+            $table->string('alter_resource_id');
+            $table->string('description')->nullable();
+            $table->enum('type', ['IN', 'OUT']);
             $table->timestamps();
             $table->decimal('amount', 18, 6);
-            $table->string('category_id');
-            $table->text('notes');
+            $table->decimal('resultant_balance', 18, 6);
+            $table->string('category_id')->nullable();
+            $table->string('operator_id');      // ID de la persona que captura
+            $table->text('notes')->nullable();
         });
     }
 

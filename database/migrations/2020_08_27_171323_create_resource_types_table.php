@@ -15,16 +15,17 @@ class CreateResourceTypesTable extends Migration
     {
         Schema::create('resource_types', function (Blueprint $table) {
             $table->string('id');
+            $table->string('description');
             $table->timestamps();
         });
         DB::table('resource_types')->insert([
-            [ 'id' => 'CA' ],       // Cash
-            [ 'id' => 'BA' ],       // Bank Account / Debit Card
-            [ 'id' => 'CC' ],       // Credit Card
-            [ 'id' => 'LO' ],       // Loan
-            [ 'id' => 'PA' ],       // (Passive Asset) Value
-            [ 'id' => 'EA' ],       // Electronic Account (Paypal, BitCoin, etc)
-            [ 'id' => 'EW' ]        // Electronic Wallet (Paypal, BitCoin, etc)
+            [ 'id' => 'CA', 'description' => 'Cash' ],
+            [ 'id' => 'BA', 'description' => 'Bank Account / Debit Card' ],
+            [ 'id' => 'CC', 'description' => 'Credit Card' ],
+            [ 'id' => 'LO', 'description' => 'Loan' ],
+            [ 'id' => 'PA', 'description' => '(Passive Asset) Value' ],
+            [ 'id' => 'EA', 'description' => 'Electronic Account (Paypal, BitCoin, etc)' ],
+            [ 'id' => 'EW', 'description' => 'Electronic Wallet (Paypal, BitCoin, etc)' ]
         ]);
     }
 

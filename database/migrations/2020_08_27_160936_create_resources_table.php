@@ -20,16 +20,29 @@ class CreateResourcesTable extends Migration
             $table->string('icon_id');
             $table->string('alias');
             $table->string('currency_id');
+            $table->decimal('balance', 18, 6);
             $table->timestamps();
         });
-        DB::table('resources')->insert([
+        DB::table('resources')->insert(
+            [[
             'id' => '0000-0000-0000-0000-0000',
             'owner_id' => '0000-0000-0000-0000-0000',
-            'resource_type_id' => 'WA',
+            'resource_type_id' => 'CA',
             'icon_id' => 'wallet',
-            'alias' => 'My Wallet',
+            'alias' => 'My Wallet (Cash)',
+            'balance' => 0,
             'currency_id' => 'MXN',
-        ]);
+            ],
+            [
+            'id' => '0000-0000-0000-0000-0001',
+            'owner_id' => '0000-0000-0000-0000-0000',
+            'resource_type_id' => 'BA',
+            'icon_id' => 'bank',
+            'alias' => 'My Bank Account',
+            'balance' => 0,
+            'currency_id' => 'MXN',
+            ]]
+        );
     }
 
     /**
