@@ -111,6 +111,12 @@
             $(document).ready(function() {
               $('#dataTable').DataTable();
             });
+
+            function SelectImage(tag) {
+                console.log (tag);
+            }
+
+
         </script>
     @endsection
 </x-master>
