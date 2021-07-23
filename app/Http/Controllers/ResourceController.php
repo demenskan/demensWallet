@@ -50,12 +50,15 @@ class ResourceController extends Controller
         ]);
         $inputs['id']=Str::uuid();
         $inputs['resource_type_id']=request('resource_type_id');
-        $inputs['icon_id']=request('icon');
+        if (request('radio-icon')=='gallery') {
+            $inputs['icon_id']=request('hdnGalleryImage');
+        }
+        // Falta la parte para las imagenes subidas
         $inputs['currency_id']=request('currency_id');
         $inputs['balance']=request('initial_amount');
-/*
-    dd($inputs);
- */
+        /*
+            dd(request());
+         */
         auth()->user()->resources()->create($inputs);
         // Crea una transaccion inicial para ajuste de saldo
         Transaction::create([

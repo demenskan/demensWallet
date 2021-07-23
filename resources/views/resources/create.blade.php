@@ -59,7 +59,8 @@
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#GallerySelectModal" >
                                 {{__('Select...')}}
                             </button>
-                            <input type="hidden" name="hdnGalleryImage" value="null" />
+                            <input type="hidden" id="GallerySelectedImageHidden" name="hdnGalleryImage" value="null" />
+                            <div id="GallerySelectedImageText"></div>
                             <x-resources.gallery-select-modal :images="$images" />
                         </div>
                     </div>
@@ -113,6 +114,9 @@
             });
 
             function SelectImage(tag) {
+                $('#GallerySelectedImageText').html(tag);
+                $('#GallerySelectedImageHidden').attr('value',tag);
+                $('#GallerySelectModal').modal('hide');
                 console.log (tag);
             }
 
