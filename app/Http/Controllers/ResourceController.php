@@ -53,7 +53,23 @@ class ResourceController extends Controller
         if (request('radio-icon')=='gallery') {
             $inputs['icon_id']=request('hdnGalleryImage');
         }
-        // Falta la parte para las imagenes subidas
+        else {
+            // Ver notas en el proyecto de cms
+            //'post_image' => "mimes:png,jpeg,gif",
+
+            if(request('post_image')) {
+                $path=request('post_image')->store('public/images/custom');
+                $new_icon=Icon::create([
+                    'id' => Str::uuid(),
+                    'filename' =>  substr($path,21),  //parche para que le quite la parte de la carpeta
+                    'type' => 'custom',
+                    'user_id' => auth()->user()->id,
+                    'tag' => request('icon_tag')
+                ]);
+                $inputs['icon_id']=$new_icon->id;
+                //dd($new_icon);
+            }
+        }
         $inputs['currency_id']=request('currency_id');
         $inputs['balance']=request('initial_amount');
         /*
@@ -75,6 +91,8 @@ class ResourceController extends Controller
 
         session()->flash("message", __("Resource created"));
         return redirect()->route("resources.admin");
+
+        
     }
 
 

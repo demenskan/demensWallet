@@ -7,6 +7,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">{{ __('Details of resource')." ".$resource->alias }}</h6>
+                <img src="{{ $resource->icon_file }}" height="32" />
             </div>
             <div class="card-body">
         @if (count($transactions)>0)

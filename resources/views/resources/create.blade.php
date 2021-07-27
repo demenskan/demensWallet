@@ -31,7 +31,7 @@
                   </h6>
                 </div>
                 <div class="card-body">
-                  <form class="user" action="{{route('resources.store')}}" method="POST">
+                  <form class="user" action="{{route('resources.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                       <div class="col-sm-12">
@@ -45,15 +45,18 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-3">
-                          <input type="radio" name="radio-icon" value="upload" class="form-control">{{__("Upload a picture")}}
+                          <input type="radio" name="radio-icon" value="upload" class="form-control">
+                          <label for="radio-icon">{{__("Upload a picture")}}</label>
+                          <input type="text" name="icon_tag" class="form-control" id="icon-tag" placeholder="{{__('Icon Tag')}}">
                         </div>
                         <div class="col-sm-8">
-                          <input type="button" name="btn" class="form-control" id="Icon" placeholder="{{__('Icon')}}">
+                          <input type="file" name="post_image" class="form-control-file" id="" placeholder="{{__('Upload file')}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-3">
-                          <input type="radio" name="radio-icon" value="gallery" class="form-control">{{__("Existing in the gallery")}}
+                          <input type="radio" name="radio-icon" value="gallery" class="form-control">
+                          <label for="radio-icon">{{__("Existing in the gallery")}}</label>
                         </div>
                         <div class="col-sm-8">
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#GallerySelectModal" >
@@ -113,11 +116,11 @@
               $('#dataTable').DataTable();
             });
 
-            function SelectImage(tag) {
+            function SelectImage(tag, id) {
                 $('#GallerySelectedImageText').html(tag);
-                $('#GallerySelectedImageHidden').attr('value',tag);
+                $('#GallerySelectedImageHidden').attr('value',id);
                 $('#GallerySelectModal').modal('hide');
-                console.log (tag);
+                //console.log (tag);
             }
 
 

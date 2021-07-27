@@ -61,7 +61,7 @@
                                           {{ $image->tag  }}
                                       </td>
                                       <td>
-                                         <button type="button" class="btn btn-primary" onclick="SelectImage('{{ $image->tag  }}')" >Select</button>
+                                          <button type="button" class="btn btn-primary" onclick="SelectImage('{{ $image->tag  }}','{{ $image->id }}')" >Select</button>
                                       </td>
 
                                     </tr>

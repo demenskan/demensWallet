@@ -14,23 +14,25 @@ class CreateIconsTable extends Migration
     public function up()
     {
         Schema::create('icons', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->string('filename')->unique;
-            $table->string('tag')->unique;
+            $table->enum('type', ['standard','custom']);
+            $table->string('user_id')->nullable();
+            $table->string('tag');
             $table->timestamps();
         });
         DB::table('icons')->insert([
-            [ 'id' => 1, 'filename' => '002-wallet-1.png', 'tag' => 'wallet 1' ],
-            [ 'id' => 2, 'filename' => '001-wallet-2.png', 'tag' => 'wallet 2 '],
-            [ 'id' => 3, 'filename' => '003-wallet.png', 'tag' => 'wallet 3' ],
-            [ 'id' => 4, 'filename' => '004-money-3.png', 'tag' => 'money' ],
-            [ 'id' => 5, 'filename' => '005-money-2.png', 'tag' => 'money 2'],
-            [ 'id' => 6, 'filename' => '006-dollar-6.png', 'tag' => 'dollar'],
-            [ 'id' => 7, 'filename' => '007-pound-sterling-4.png', 'tag' => 'pound' ],
-            [ 'id' => 8, 'filename' => '012-money-bag-1.png' , 'tag' => 'money bag' ],
-            [ 'id' => 9, 'filename' => '028-credit-card-2.png', 'tag' => 'credit card' ],
-            [ 'id' => 10, 'filename' => 'bbva.png' , 'tag' => 'bbva' ],
-            [ 'id' => 11, 'filename' => 'santander.png', 'tag' =>  'santander']
+            [ 'id' => '0000-0000-0000-0001', 'filename' => '002-wallet-1.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'wallet 1' ],
+            [ 'id' => '0000-0000-0000-0002', 'filename' => '001-wallet-2.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'wallet 2 '],
+            [ 'id' => '0000-0000-0000-0003', 'filename' => '003-wallet.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'wallet 3' ],
+            [ 'id' => '0000-0000-0000-0004', 'filename' => '004-money-3.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'money' ],
+            [ 'id' => '0000-0000-0000-0005', 'filename' => '005-money-2.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'money 2'],
+            [ 'id' => '0000-0000-0000-0006', 'filename' => '006-dollar-6.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'dollar'],
+            [ 'id' => '0000-0000-0000-0007', 'filename' => '007-pound-sterling-4.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'pound' ],
+            [ 'id' => '0000-0000-0000-0008', 'filename' => '012-money-bag-1.png' , 'type' => 'standard', 'user_id' => null, 'tag' => 'money bag' ],
+            [ 'id' => '0000-0000-0000-0009', 'filename' => '028-credit-card-2.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'credit card' ],
+            [ 'id' => '0000-0000-0000-0010', 'filename' => 'bbva.png' , 'type' => 'standard', 'user_id' => null, 'tag' => 'bbva' ],
+            [ 'id' => '0000-0000-0000-0011', 'filename' => 'santander.png', 'type' => 'standard', 'user_id' => null, 'tag' =>  'santander']
         ]);
     }
 

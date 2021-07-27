@@ -14,7 +14,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>{{ __('Type') }}</th>
+                      <th>&nbsp;</th>
                       <th>{{ __('Alias') }}</th>
                       <th>{{ __('Currency') }}</th>
                       <th>{{ __('Current Balance') }}</th>
@@ -23,7 +23,7 @@
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>{{ __('Type') }}</th>
+                      <th>&nbsp;</th>
                       <th>{{ __('Alias') }}</th>
                       <th>{{ __('Currency') }}</th>
                       <th>{{ __('Current Balance') }}</th>
@@ -33,9 +33,11 @@
                   <tbody>
                     @foreach ($resources as $resource)
                     <tr>
-                        <td>{{$resource->resource_type_id}}</td>
+                        <td>
+                            <img src="{{$resource->icon_file}}" width="32" height="32" />
+                        </td>
                         <td>{{$resource->alias}}</td>
-                        <td>{{$resource->currency_id}}</td>
+                        <td>{{$resource->currency->full_name}}</td>
                         <td style="text-align: right">{{number_format($resource->balance,2)}}</td>
                         <td><a href="{{ route("resources.balance.detail", $resource->id)  }}">{{ __('See detail') }}</a></td>
                     </tr>
