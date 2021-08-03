@@ -22,6 +22,7 @@ class CreateResourcesTable extends Migration
             $table->string('currency_id');
             $table->decimal('balance', 18, 6);
             $table->boolean('active')->default(true);
+            $table->boolean('unaltered_balance')->default(true);
             $table->timestamps();
         });
         DB::table('resources')->insert(

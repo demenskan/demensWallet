@@ -12,12 +12,24 @@ class Resource extends Model
     protected $fillable=[ 'id', 'owner_id', 'resource_type_id', 'alias', 'currency_id', 'balance', 'icon_id' ];
 
     public function transactions() {
-        return $this->hasMany('App\Transaction');
+        return $this->hasMany('App\Transaction')->orderBy('operation_timestamp');
     }
 
     public function user() {
         return $this->belongsTo('App\User');
     }
+
+    public function transactionsBefore($timestamp) {
+        //Returns the transaction elements which 'operation_timestamp' value is earlier than the timestamp parameter
+        return $this->transactions()->where('operation_timestamp','<',$timestamp);
+    }
+
+    public function transactionsAfter($timestamp) {
+        //Returns the transaction elements which 'operation_timestamp' value is later than the timestamp parameter
+        return $this->transactions()->where('operation_timestamp','>',$timestamp);
+    }
+
+
 
 
     public function getIconFileAttribute() {

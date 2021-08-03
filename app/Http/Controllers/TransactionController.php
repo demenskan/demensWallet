@@ -34,25 +34,39 @@ class TransactionController extends Controller
         //Origen y destino deben ser diferentes
         //cantidad es requerida y numerica
         //El usuario debe ser propietario de, o tener permisos de escritura en los 2 recursos
+        /*
+        dd(request()->all());
+         */
+        $flash_messages= [];
         request()->validate([
             'amount' => 'required|numeric',
             'origin' => 'different:destiny',
-            'destiny' => 'different:origin'
+            'destiny' => 'different:origin',
+            'operation-timestamp' => 'required'
         ]);
         if (request('origin')!="INCOME") {
             // Valid for resource-resource & resource-outcome
             //--Reduces balance of origin resource
             $resource_origin=Resource::findOrFail(request('origin'));
-            $resource_origin->balance-=request('amount');
+            if ($resource_origin->transactionsAfter(request('operation-timestamp'))->count()>0) {
+                $resource_origin->unaltered_balance=false;
+                $flash_messages[]= [ 'text' => __("There are operations dated after this one. The resource ".$resource_origin->alias."  will be marked down as altered"), 'style' => 'warning' ];
+                $resultant_balance=null;
+            }
+            else {
+                $resultant_balance=$resource_origin->balance-request('amount');
+                $resource_origin->balance=$resultant_balance;
+            }
             $resource_origin->update();
             Transaction::create([
                 'id' => Str::uuid(),
                 'resource_id' => request('origin'),
                 'alter_resource_id' => request('destiny'),
                 'amount' => request('amount'),
-                'resultant_balance' => $resource_origin->balance,
+                'resultant_balance' => $resultant_balance,
                 'description' => request('description'),
                 'type' => "OUT",
+                'operation_timestamp' => request('operation-timestamp'),
                 'category_id' => request('category'),
                 'operator_id' => auth()->user()->id,
                 'notes' => request('notes'),
@@ -62,24 +76,36 @@ class TransactionController extends Controller
             // Valid for income-resource & resource-resource
             // Increase balance of destination resource
             $resource_destiny=Resource::findOrFail(request('destiny'));
-            $resource_destiny->balance+=request('amount');
+            if ($resource_destiny->transactionsAfter(request('operation-timestamp'))->count()>0) {
+                $resource_destiny->unaltered_balance=false;
+                $flash_messages[]= [ 'text' => __("There are operations dated after this one. The resource ".$resource_destiny->alias."  will be marked down as altered"), 'style' => 'warning' ];
+                $resultant_balance=null;
+            }
+            else {
+                $resultant_balance=$resource_destiny->balance+request('amount');
+                $resource_destiny->balance=$resultant_balance;
+            }
             $resource_destiny->update();
             Transaction::create([
                 'id' => Str::uuid(),
                 'resource_id' => request('destiny'),
                 'alter_resource_id' => request('origin'),
                 'amount' => request('amount'),
-                'resultant_balance' => $resource_destiny->balance,
+                'resultant_balance' => $resultant_balance,
                 'description' => request('description'),
                 'type' => "IN",
+                'operation_timestamp' => request('operation-timestamp'),
                 'category_id' => request('category'),
                 'operator_id' => auth()->user()->id,
                 'notes' => request('notes'),
             ]);
         }
-
+        $flash_messages[]= [ 'text' => __('Transaction created'), 'style' => 'success' ];
+        session()->flash('flash-messages', $flash_messages);
+        /*
         session()->flash('message-text', __('Transaction created'));
         session()->flash('message-style','success');
+         */
         return back();
     }
 

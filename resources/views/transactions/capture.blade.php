@@ -1,11 +1,13 @@
 <x-master>
     @section('content')
-        @if (session()->has('message-text'))
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="alert alert-{{session('message-style')}}">{{session('message-text')}}</div>
-            </div>
-        </div>
+        @if (session()->has('flash-messages'))
+            @foreach (session('flash-messages') as $message)
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="alert alert-{{$message['style']}}">{{$message['text']}}</div>
+                    </div>
+                </div>
+            @endforeach
         @endif
 
         @if ($errors->any())
@@ -56,16 +58,18 @@
                             <textarea name="notes" class="form-control" id="notes" style="height: 180px;" placeholder="{{__('Notes')}}"></textarea>
                         </div>
                         <div class="col-sm-6">
-                            <label for='category'>{{ __('Category') }}</label>
+                            <label for='btn-category'>{{ __('Category') }}</label>
                             <div id="categories-select">
                             </div>
-                            <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoriesModal" >
+                            <button type="button" class="btn btn-success btn-block" id="btn-category" data-toggle="modal" data-target="#addCategoriesModal" >
                                 {{__('Add categories...')}}
                             </button>
                             <div class="col-sm-6">
                                 <button type="button" class="btn btn-primary btn-block" ><i class="fas fa-tags"></i> &nbsp; {{__('Manage labels...')}}</button>
                             </div>
                             <x-transactions.add-categories-modal />
+                            <label for="operation-timestamp">{{ __('Operation timestamp') }}</label>
+                            <input type="datetime-local" value="{{ date('Y-m-d\TH:i') }}" class="form-control" name="operation-timestamp" id="operation-date" placeholder="Operation timestamp"/>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Register') }}</button>
@@ -125,8 +129,10 @@
                                 $('#alert-modal').html('<div class="alert alert-danger">error: ' + sURL + '</div>');
                             });
                 }
-
+                    //Inicializacion para el selectpicker
+                    //$('.select-picker').selectpicker({});
             </script>
+            <script src="{{ asset('js/bootstrap-select.js') }}"></script>
 
     @endsection
 

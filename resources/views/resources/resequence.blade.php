@@ -6,62 +6,55 @@
         @endif
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">
-                    <img src="{{ $resource->icon_file }}" height="32" />&nbsp;&nbsp;
-                    {{ __('Details of resource')." ".$resource->alias }}</h6>
+              <h6 class="m-0 font-weight-bold text-primary">{{ __('All Resources') }}</h6>
             </div>
             <div class="card-body">
-        @if (count($transactions)>0)
+            @if (count($transactions)>0)
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>{{ __('Id') }}</th>
                       <th>{{ __('Date') }}</th>
                       <th>{{ __('Concept') }}</th>
-                      <th>{{ __('Amount') }}</th>
-                      <th>{{ __('New balance') }}</th>
                       <th>{{ __('Type') }}</th>
-                      <th>{{ __('Details') }}</th>
+                      <th>{{ __('Amount') }}</th>
+                      <th>{{ __('Old balance') }}</th>
+                      <th>{{ __('New balance') }}</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
+                      <th>{{ __('Id') }}</th>
                       <th>{{ __('Date') }}</th>
                       <th>{{ __('Concept') }}</th>
-                      <th>{{ __('Amount') }}</th>
-                      <th>{{ __('New balance') }}</th>
                       <th>{{ __('Type') }}</th>
-                      <th>{{ __('Details') }}</th>
+                      <th>{{ __('Amount') }}</th>
+                      <th>{{ __('Old balance') }}</th>
+                      <th>{{ __('New balance') }}</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    @foreach ($transactions as $transaction)
+                    @foreach ($results as $transaction)
                     <tr>
+                        <td>{{$transaction->id}}</td>
                         <td>{{$transaction->operation_timestamp}}</td>
                         <td>{{$transaction->description}}</td>
-                        <td style="text-align: right">{{number_format($transaction->amount,2)}}</td>
-                        <td style="text-align: right">{{number_format($transaction->resultant_balance,2)}}</td>
                         <td>{{ $transaction->type }}</td>
-                        <td><a href="{{ route("transaction.detail", $transaction->id)  }}">{{ __('See detail') }}</a></td>
+                        <td style="text-align: right">{{number_format($transaction->amount,2)}}</td>
+                        <td style="text-align: right">{{number_format($transaction->old_balance,2)}}</td>
+                        <td style="text-align: right">{{number_format($transaction->new_balance,2)}}</td>
                     </tr>
                     @endforeach
                   </tbody>
                 </table>
               </div>
-        @else
-              <div class="alert alert-warning">{{ __('You have no transactions available!') }}</div>
-        @endif
             </div>
-            <button type="button" class="btn btn-primary" onclick="location.href='{{route('resources.balance.list')}}'">
-                <i class="fas fa-arrow-left"></i>&nbsp;{{__("Go back to resource's list")}}
-            </button>
           </div>
 
           {{--Estilos de bootstrap para centrar --}}
           <div class="d-flex">
             <div class="mx-auto">
-                {{-- Genera links para paginas--}}
-                {{$transactions->links()}}
             </div>
           </div>
     @endsection

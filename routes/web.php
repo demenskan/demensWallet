@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function (){
     Route::post('/resources/admin/store','ResourceController@store')->name('resources.store');
     Route::get('/resources/balance/list', 'ResourceController@list')->name('resources.balance.list');
     Route::get('/resources/balance/{resource}', 'ResourceController@detail')->name('resources.balance.detail');
+    Route::get('/resources/resequence/{resource}', 'ResourceController@resequence')->name('resources.resequence');
 });
 
 

@@ -19,9 +19,10 @@ class CreateTransactionTable extends Migration
             $table->string('alter_resource_id');
             $table->string('description')->nullable();
             $table->enum('type', ['IN', 'OUT']);
+            $table->datetime('operation_timestamp');
             $table->timestamps();
             $table->decimal('amount', 18, 6);
-            $table->decimal('resultant_balance', 18, 6);
+            $table->decimal('resultant_balance', 18, 6)->nullable();
             $table->string('category_id')->nullable();
             $table->string('operator_id');      // ID de la persona que captura
             $table->text('notes')->nullable();

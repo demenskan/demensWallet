@@ -17,6 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
+  <!-- Custom style for select-picker -->
+  <link href="{{asset('css/bootstrap-select.css')}}" rel="stylesheet">
 
 </head>
 

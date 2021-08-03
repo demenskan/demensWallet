@@ -16,7 +16,7 @@ class Transaction extends Model
 
 
     protected $fillable = [
-        'id','resource_id', 'alter_resource_id','description', 'type', 'amount', 'resultant_balance','category_id', 'operator_id', 'notes'
+        'id','resource_id', 'alter_resource_id','description', 'type', 'operation_timestamp', 'amount', 'resultant_balance','category_id', 'operator_id', 'notes'
 
     ];
 

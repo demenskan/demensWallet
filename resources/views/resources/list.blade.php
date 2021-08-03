@@ -38,7 +38,15 @@
                         </td>
                         <td>{{$resource->alias}}</td>
                         <td>{{$resource->currency->full_name}}</td>
-                        <td style="text-align: right">{{number_format($resource->balance,2)}}</td>
+                        <td style="text-align: right">
+                            @if ($resource->unaltered_balance)
+                                {{number_format($resource->balance,2)}}
+                            @else
+                                <button type="button" class="btn btn-primary" onclick="location.href='{{route('resources.resequence',$resource->id)}}'" >
+                                    <i class="fas fa-sort-amount-down"></i> &nbsp; {{__('Re-sequence')}}
+                                </button>
+                            @endif
+                        </td>
                         <td><a href="{{ route("resources.balance.detail", $resource->id)  }}">{{ __('See detail') }}</a></td>
                     </tr>
                     @endforeach
