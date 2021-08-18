@@ -9,7 +9,6 @@
               <h6 class="m-0 font-weight-bold text-primary">{{ __('All Resources') }}</h6>
             </div>
             <div class="card-body">
-            @if (count($transactions)>0)
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -37,13 +36,13 @@
                   <tbody>
                     @foreach ($results as $transaction)
                     <tr>
-                        <td>{{$transaction->id}}</td>
-                        <td>{{$transaction->operation_timestamp}}</td>
-                        <td>{{$transaction->description}}</td>
-                        <td>{{ $transaction->type }}</td>
-                        <td style="text-align: right">{{number_format($transaction->amount,2)}}</td>
-                        <td style="text-align: right">{{number_format($transaction->old_balance,2)}}</td>
-                        <td style="text-align: right">{{number_format($transaction->new_balance,2)}}</td>
+                        <td>{{$transaction['id']}}</td>
+                        <td>{{$transaction['operation_timestamp']}}</td>
+                        <td>{{$transaction['description']}}</td>
+                        <td>{{ $transaction['type'] }}</td>
+                        <td style="text-align: right">{{number_format($transaction['amount'],2)}}</td>
+                        <td style="text-align: right">{{number_format($transaction['old_balance'],2)}}</td>
+                        <td style="text-align: right">{{number_format($transaction['new_balance'],2)}}</td>
                     </tr>
                     @endforeach
                   </tbody>

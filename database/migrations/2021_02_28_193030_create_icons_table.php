@@ -26,7 +26,7 @@ class CreateIconsTable extends Migration
             [ 'id' => '0000-0000-0000-0002', 'filename' => '001-wallet-2.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'wallet 2 '],
             [ 'id' => '0000-0000-0000-0003', 'filename' => '003-wallet.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'wallet 3' ],
             [ 'id' => '0000-0000-0000-0004', 'filename' => '004-money-3.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'money' ],
-            [ 'id' => '0000-0000-0000-0005', 'filename' => '005-money-2.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'money 2'],
+            [ 'id' => '0000-0000-0000-0005', 'filename' => '005-money-2.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'default'],
             [ 'id' => '0000-0000-0000-0006', 'filename' => '006-dollar-6.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'dollar'],
             [ 'id' => '0000-0000-0000-0007', 'filename' => '007-pound-sterling-4.png', 'type' => 'standard', 'user_id' => null, 'tag' => 'pound' ],
             [ 'id' => '0000-0000-0000-0008', 'filename' => '012-money-bag-1.png' , 'type' => 'standard', 'user_id' => null, 'tag' => 'money bag' ],

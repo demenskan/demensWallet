@@ -63,4 +63,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Transaction');
     }
 
+    public function icons() {
+        return $this->hasMany('App\Icon');
+    }
+
 }

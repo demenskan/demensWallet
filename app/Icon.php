@@ -16,4 +16,13 @@ class Icon extends Model
     public function resource() {
         return $this->hasMany('App\Resource','icon');
     }
+
+    public function getFullPathAttribute() {
+        // accesor para obtener la ruta del icono, dependiendo del tipo
+        if ($this->type=='standard')
+            return '/images/freepik/'.$this->filename;
+        else
+            return '/images/custom/'.$this->filename;
+        //return $this->hasMany('App\Icon');
+    }
 }

@@ -36,7 +36,7 @@
                           <div class="card shadow mb-4">
                             <div class="card-body">
                               <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="90%" cellspacing="0" data-page-length="5">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" data-page-length="5">
                                   <thead>
                                     <tr>
                                       <th>Image</th>

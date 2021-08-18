@@ -37,11 +37,17 @@ Route::middleware('auth')->group(function (){
     Route::get('/resources/admin','ResourceController@administrate')->name('resources.admin');
     Route::get('/resources/admin/create','ResourceController@create')->name('resources.create');
     Route::post('/resources/admin/store','ResourceController@store')->name('resources.store');
+    Route::post('/resources/admin/update','ResourceController@update')->name('resources.update');
+    Route::get('/resources/admin/edit/{resource}','ResourceController@edit')->name('resources.edit');
     Route::get('/resources/balance/list', 'ResourceController@list')->name('resources.balance.list');
     Route::get('/resources/balance/{resource}', 'ResourceController@detail')->name('resources.balance.detail');
     Route::get('/resources/resequence/{resource}', 'ResourceController@resequence')->name('resources.resequence');
+    // I used 'icon' instead of 'icons' because that made laravel to miss the route
+    Route::get('/icon/capture', 'IconController@create')->name('icons.capture');
+    Route::get('/icon/administrate', 'IconController@admin')->name('icons.administrate');
+    Route::post('/icon/store', 'IconController@store')->name('icons.store');
+    Route::get('/icon/edit/{icon}', 'IconController@edit')->name('icons.edit');
+    Route::post('/icon/update', 'IconController@update')->name('icons.update');
+
+
 });
-
-
-
-

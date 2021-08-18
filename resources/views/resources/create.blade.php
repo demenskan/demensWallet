@@ -44,21 +44,52 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-3">
-                          <input type="radio" name="radio-icon" value="upload" class="form-control">
-                          <label for="radio-icon">{{__("Upload a picture")}}</label>
-                          <input type="text" name="icon_tag" class="form-control" id="icon-tag" placeholder="{{__('Icon Tag')}}">
+                        <div class="col-sm-2">
+                            {{__("Icon")}}
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-6">
+                            <select name="icon" class="custom-select custom-select-sm form-control form-control-sm selectpicker" id="icon">
+                                @foreach ($images as $icon)
+                                    <option data-content="<img src='{{ $icon->full_path }}' width='32' height='32' />&nbsp;<strong>{{ $icon->tag }}</strong>" 
+                                            value="{{ $icon->id}}"
+                                            {{ $icon->tag=='default' ? "selected=selected" : "" }}
+                                            >
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        {{--
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#GallerySelectModal" >
+                                {{__('Change...')}}
+                            </button>
+                            <x-resources.gallery-select-modal :images="$images" />
+                        </div>
+                        --}}
+                    </div>
+                    {{--
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                          <input type="radio" name="radio-icon" value="upload" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                          <label for="radio-icon">{{__("Upload a picture")}}</label>
+                        </div>
+                        <div class="col-sm-2">
                           <input type="file" name="post_image" class="form-control-file" id="" placeholder="{{__('Upload file')}}">
+                        </div>
+                        <div class="col-sm-4">
+                          <input type="text" name="icon_tag" class="form-control" id="icon-tag" placeholder="{{__('Icon Tag')}}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-3">
-                          <input type="radio" name="radio-icon" value="gallery" class="form-control">
+                        <div class="col-sm-2">
+                          <input type="radio" name="radio-icon" value="gallery" class="form-control" checked="checked">
+                        </div>
+                        <div class="col-sm-6">
                           <label for="radio-icon">{{__("Existing in the gallery")}}</label>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-4">
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#GallerySelectModal" >
                                 {{__('Select...')}}
                             </button>
@@ -67,6 +98,7 @@
                             <x-resources.gallery-select-modal :images="$images" />
                         </div>
                     </div>
+                    --}}
                     <div class="form-group row">
                         <div class="col-sm-12">
                           <input type="text" name="alias" class="form-control" id="alias" placeholder="{{__('Alias')}}">
@@ -89,9 +121,11 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-primary btn-user">{{ __('Register') }}</button>
-                            <button type="button" class="btn btn-default" onclick="location.href='{{route('resources.admin')}}'">
+                            <button type="button" class="btn btn-primary" onclick="location.href='{{route('resources.admin')}}'">
                                 <i class="fas fa-arrow-left"></i>&nbsp;{{__("Go back to resource's list")}}
+                            </button>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-save"></i>&nbsp;{{ __('Register') }}
                             </button>
                         </div>
                     </div>
@@ -122,9 +156,8 @@
                 $('#GallerySelectModal').modal('hide');
                 //console.log (tag);
             }
-
-
         </script>
+        <script src="{{ asset('js/bootstrap-select.js') }}"></script>
     @endsection
 </x-master>
 

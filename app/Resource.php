@@ -35,9 +35,9 @@ class Resource extends Model
     public function getIconFileAttribute() {
         // accesor para obtener la ruta del icono, dependiendo del tipo
         if ($this->icon->type=='standard')
-            return '/images/freepik/'.$this->icon->filename;
+            return asset("freepik_icons/".$this->icon->filename);
         else
-            return '/images/custom/'.$this->icon->filename;
+            return asset('images/custom/'.$this->icon->filename);
         //return $this->hasMany('App\Icon');
     }
     /*

@@ -13,14 +13,10 @@
                         <input type="text" class="form-control" name="name" id="name-text" placeholder="{{ __("Name") }}">
                         <div class="container">
                             <label for="type">{{ __("Type") }}</label>
-                            <div class="custom-control custom-radio">
-                                <input class="custom-control-input" id="type-in-radio" type="radio" name="type" value="IN" onclick="PopulateParentCategories('IN');" />
-                                <label class="custom-control-label" for="type-in-radio">{{ __("Income") }}</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <label class="custom-control-label" for="type-out-radio">{{ __("Outcome") }}</label>
-                                <input class="custom-control-input" id="type-out-radio" type="radio" name="type" value="OUT" onclick="PopulateParentCategories('OUT');" />
-                            </div>
+                            <select name="type" class="custom-select custom-select-sm form-control form-control-sm" onChange="PopulateParentCategories(this.options[this.selectedIndex].value);">
+                                 <option value="IN">{{ __("Income") }}</option>
+                                 <option value="OUT">{{ __("Outcome") }}</option>
+                            </select>
                         </div>
                         <hr/>
                         <div class="custom-control custom-checkbox">
@@ -28,6 +24,11 @@
                             <label class="custom-control-label" for="is-child-check">{{ __("This category is child of the following: ") }}</label>
                         </div>
                         <div id="parent-categories-select">
+                            <x-transactions-categories-select
+                            
+                            
+                            
+                            
                             <div class="alert alert-warning">{{ __("You must first select the type of the new category") }}</div>
                         </div>
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>

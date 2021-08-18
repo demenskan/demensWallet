@@ -39,7 +39,7 @@
                         <td>{{$resource->alias}}</td>
                         <td>{{$resource->currency->full_name}}</td>
                         <td style="text-align: right">
-                            @if ($resource->unaltered_balance)
+                            @if ($resource->transactions_sorted)
                                 {{number_format($resource->balance,2)}}
                             @else
                                 <button type="button" class="btn btn-primary" onclick="location.href='{{route('resources.resequence',$resource->id)}}'" >

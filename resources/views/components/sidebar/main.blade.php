@@ -24,9 +24,11 @@
 
       <!-- Nav Item - Transactions  -->
       <x-sidebar.transactions/>
-      <!-- Nav Item - Transactions  -->
+      <!-- Nav Item - Resources  -->
       <x-sidebar.resources/>
-      <li class="nav-item">
+      <!-- Nav Item - Icons -->
+      <x-sidebar.icons/>
+       <li class="nav-item">
         <a class="nav-link" href="{{route('home')}}">
           <i class="fas fa-fw fa-home"></i>
           <span>Home</span></a>

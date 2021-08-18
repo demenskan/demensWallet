@@ -17,6 +17,7 @@
                       <th>&nbsp;</th>
                       <th>{{ __('Alias') }}</th>
                       <th>{{ __('Currency') }}</th>
+                      <th>{{ __('Status') }}</th>
                       <th>{{ __('Edit') }}</th>
                     </tr>
                   </thead>
@@ -25,6 +26,7 @@
                       <th>&nbsp;</th>
                       <th>{{ __('Alias') }}</th>
                       <th>{{ __('Currency') }}</th>
+                      <th>{{ __('Status') }}</th>
                       <th>{{ __('Edit') }}</th>
                     </tr>
                   </tfoot>
@@ -34,7 +36,18 @@
                         <td><img src="{{$resource->icon_file}}" width="32" height="32" /></td>
                         <td>{{$resource->alias}}</td>
                         <td>{{$resource->currency->full_name}}</td>
-                        <td></td>
+                        <td>
+                            @if ($resource->active==true)
+                                <div class="alert alert-success">{{ __("Active") }}</div>
+                            @else
+                                <div class="alert alert-danger">{{ __("Inactive") }}</div>
+                            @endif
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="location.href='{{route('resources.edit',$resource->id)}}'">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
                     </tr>
                     @endforeach
                   </tbody>

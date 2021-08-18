@@ -37,8 +37,22 @@ class ResourceController extends Controller
         dd(File::files(public_path("storage/images")));
  */
         return view('resources.create',
-            [ "resource_types" => Resource_type::all(), 
-              "currencies" => Currency::all(), "images" => Icon::all()
+            [
+                "resource_types" => Resource_type::all(),
+                "currencies" => Currency::all(),
+                "images" => Icon::all()
+            ]
+        );
+    }
+
+    function edit($resource_id) {
+        $resource=Resource::findOrFail($resource_id);
+        return view('resources.edit',
+            [
+              "resource_types" => Resource_type::all(),
+              "currencies" => Currency::all(),
+              "images" => Icon::all(),
+              "resource" => $resource
             ]
         );
     }
@@ -50,47 +64,47 @@ class ResourceController extends Controller
         ]);
         $inputs['id']=Str::uuid();
         $inputs['resource_type_id']=request('resource_type_id');
-        if (request('radio-icon')=='gallery') {
-            $inputs['icon_id']=request('hdnGalleryImage');
-        }
-        else {
-            // Ver notas en el proyecto de cms
-            //'post_image' => "mimes:png,jpeg,gif",
-
-            if(request('post_image')) {
-                $path=request('post_image')->store('public/images/custom');
-                $new_icon=Icon::create([
-                    'id' => Str::uuid(),
-                    'filename' =>  substr($path,21),  //parche para que le quite la parte de la carpeta
-                    'type' => 'custom',
-                    'user_id' => auth()->user()->id,
-                    'tag' => request('icon_tag')
-                ]);
-                $inputs['icon_id']=$new_icon->id;
-                //dd($new_icon);
-            }
-        }
+        $inputs['icon_id']=request('icon');
         $inputs['currency_id']=request('currency_id');
-        $inputs['balance']=request('initial_amount');
+        $inputs['balance']=request('initial_amount') ?? 0;  //Null Coalescing operator PHP7
         /*
             dd(request());
          */
         auth()->user()->resources()->create($inputs);
         // Crea una transaccion inicial para ajuste de saldo
-        Transaction::create([
-            'id' => Str::uuid(),
-            'resource_id' => $inputs["id"],
-            'alter_resource_id' => "INCOME",
-            'amount' => request('initial_amount'),
-            'resultant_balance' => request('initial_amount'),
-            'description' => __("Initial amount"),
-            'operation_timestamp' => 'Now()',
-            'type' => "IN",
-            'operator_id' => auth()->user()->id,
-            'notes' => __("Initial amount")
-        ]);
-
+        //
+        if ($inputs['balance']!=0) {
+            Transaction::create([
+                'id' => Str::uuid(),
+                'resource_id' => $inputs["id"],
+                'alter_resource_id' => "INCOME",
+                'amount' => request('initial_amount'),
+                'resultant_balance' => request('initial_amount'),
+                'description' => __("Initial amount"),
+                'operation_timestamp' => date('Y-m-d H:i:s'),
+                'type' => "IN",
+                'operator_id' => auth()->user()->id,
+                'notes' => __("Initial amount")
+            ]);
+        }
+        session()->flash("div_class", "success");
         session()->flash("message", __("Resource created"));
+        return redirect()->route("resources.admin");
+    }
+
+    function update() {
+        $inputs=request()->validate([
+            'alias' => "required"
+        ]);
+        $resource=Resource::findOrFail(request('resource_id'));
+        $resource->resource_type_id=request('resource_type_id');
+        $resource->icon_id=request('icon');
+        $resource->alias=request('alias');
+        $resource->currency_id=request('currency_id');
+        $resource->active=(request('active')=="on") ? true : false;
+        $resource->update();
+        session()->flash("div_class", "success");
+        session()->flash("message", __("Resource updated"));
         return redirect()->route("resources.admin");
     }
 
@@ -142,7 +156,7 @@ class ResourceController extends Controller
         }
         //Updates the resource's balance
         $resource->balance=$base_balance;
-        $resource->unaltered_balance=true;
+        $resource->transactions_sorted=true;
         $resource->update();
         //$first_inserted_transaction=$resource->transactions()->first();
         //dd ($first_inserted_transaction->operation_timestamp);

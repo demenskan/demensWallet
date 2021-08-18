@@ -49,7 +49,7 @@ class TransactionController extends Controller
             //--Reduces balance of origin resource
             $resource_origin=Resource::findOrFail(request('origin'));
             if ($resource_origin->transactionsAfter(request('operation-timestamp'))->count()>0) {
-                $resource_origin->unaltered_balance=false;
+                $resource_origin->transactions_sorted=false;
                 $flash_messages[]= [ 'text' => __("There are operations dated after this one. The resource ".$resource_origin->alias."  will be marked down as altered"), 'style' => 'warning' ];
                 $resultant_balance=null;
             }
@@ -77,7 +77,7 @@ class TransactionController extends Controller
             // Increase balance of destination resource
             $resource_destiny=Resource::findOrFail(request('destiny'));
             if ($resource_destiny->transactionsAfter(request('operation-timestamp'))->count()>0) {
-                $resource_destiny->unaltered_balance=false;
+                $resource_destiny->transactions_sorted=false;
                 $flash_messages[]= [ 'text' => __("There are operations dated after this one. The resource ".$resource_destiny->alias."  will be marked down as altered"), 'style' => 'warning' ];
                 $resultant_balance=null;
             }
