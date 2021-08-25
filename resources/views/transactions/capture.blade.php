@@ -113,7 +113,7 @@
                         return;
                     }
                     sToken="{{ csrf_token() }}";
-                    sType= (document.getElementById('type-in-radio').checked) ? "IN" : "OUT" ;
+                    sType= document.getElementById('type-select').value ;
                     bIsChild=document.getElementById('is-child-check').checked;
                     sParent= (bIsChild==true) ?  document.getElementById('category').value : "NONE";
                     sURL='/categories/store/' + sName + '/' + sType + '/' + sParent + '/' + sToken;

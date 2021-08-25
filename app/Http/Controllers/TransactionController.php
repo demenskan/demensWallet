@@ -139,7 +139,7 @@ class TransactionController extends Controller
         if ($destiny=="OUTCOME") {
             $categories=auth()->user()->categoriesOutcome;
         }
-        return view ("components.transactions.categories-select",  [ 'categories' => $categories ]);
+        return view ("components.transactions.categories-select",  [ 'categories' => $categories, 'show_uncategorized' => true ]);
     }
 
     function populate_parent_categories($type) {
@@ -149,6 +149,6 @@ class TransactionController extends Controller
         else {
             $categories=auth()->user()->categoriesOutcome;
         }
-        return view ("components.transactions.categories-select",  [ 'categories' => $categories ]);
+        return view ("components.transactions.categories-select",  [ 'categories' => $categories, 'show_uncategorized' => false ]);
     }
 }

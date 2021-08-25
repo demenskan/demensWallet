@@ -21,7 +21,7 @@ class CategoryController extends Controller
         ]);*/
         Category::create([
             'id' => Str::uuid(),
-            'parent_id' => request('category'),
+            'parent_id' => request('parent'),
             'user_id' => auth()->user()->id,
             'name' => request('name'),
             'type' => request('type'),
