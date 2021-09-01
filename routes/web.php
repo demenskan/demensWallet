@@ -48,6 +48,11 @@ Route::middleware('auth')->group(function (){
     Route::post('/icon/store', 'IconController@store')->name('icons.store');
     Route::get('/icon/edit/{icon}', 'IconController@edit')->name('icons.edit');
     Route::post('/icon/update', 'IconController@update')->name('icons.update');
+    Route::get('/labels/administrate', 'LabelController@admin')->name('labels.administrate');
+    Route::post('/labels/store', 'LabelController@store')->name('labels.store');
+    Route::get('labels/capture', 'LabelController@create')->name('labels.capture');
+    Route::get('labels/edit/{label}', 'LabelController@edit')->name('labels.edit');
+    Route::post('labels/update', 'LabelController@update')->name('labels.update');
 
 
 });

@@ -17,8 +17,29 @@ class CreateLabelsTable extends Migration
             $table->uuid('id');
             $table->string('user_id');
             $table->string('name');
+            $table->string('background_color')->nullable();
+            $table->string('foreground_color')->nullable();
+            $table->string('fontawesome_id')->nullable();
             $table->timestamps();
         });
+        DB::table('labels')->insert(
+            [[
+            'id' => '0000-0000-0000-0000-0000',
+            'user_id' => '0000-0000-0000-0000-0000',
+            'name' => 'viajes',
+            'background_color' => '#dd00dd',
+            'foreground_color' => '#445544',
+            'fontawesome_id' => 'fa-road'
+            ],
+            [
+            'id' => '0000-0000-0000-0000-0001',
+            'user_id' => '0000-0000-0000-0000-0000',
+            'names' => 'comida',
+            'background_color' => '#d299dd',
+            'foreground_color' => '#425CFF',
+            'fontawesome_id' => 'fa-tint'
+            ]]
+        );
     }
 
     /**

@@ -32,5 +32,7 @@ class Transaction extends Model
         return $this->belongsTo('App\Category');
     }
 
-
+    public function labels() {
+        return $this->belongsToMany('App\Label');
+    }
 }

@@ -13,10 +13,9 @@ class CreateLabelsTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('labels_transactions', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->string('user_id');
-            $table->string('resource_id');
+        Schema::create('label_transaction', function (Blueprint $table) {
+            $table->string('label_id');
+            $table->string('transaction_id');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateLabelsTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('labels_transactions');
+        Schema::dropIfExists('label_transaction');
     }
 }

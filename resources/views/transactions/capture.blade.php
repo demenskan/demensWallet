@@ -54,22 +54,45 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <textarea name="notes" class="form-control" id="notes" style="height: 180px;" placeholder="{{__('Notes')}}"></textarea>
-                        </div>
-                        <div class="col-sm-6">
-                            <label for='btn-category'>{{ __('Category') }}</label>
-                            <div id="categories-select">
-                            </div>
-                            <button type="button" class="btn btn-success btn-block" id="btn-category" data-toggle="modal" data-target="#addCategoriesModal" >
-                                {{__('Add categories...')}}
-                            </button>
-                            <div class="col-sm-6">
-                                <button type="button" class="btn btn-primary btn-block" ><i class="fas fa-tags"></i> &nbsp; {{__('Manage labels...')}}</button>
-                            </div>
-                            <x-transactions.add-categories-modal />
+                        <div class="col-sm-2">
                             <label for="operation-timestamp">{{ __('Operation timestamp') }}</label>
                             <input type="datetime-local" value="{{ date('Y-m-d\TH:i') }}" class="form-control" name="operation-timestamp" id="operation-date" placeholder="Operation timestamp"/>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for='btn-category'>{{ __('Category') }}</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <div id="categories-select">
+                                <div class="alert alert-success">{{ __('Internal Movement') }} </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-success btn-block" id="btn-category" data-toggle="modal" data-target="#addCategoriesModal" >
+                                    {{__('Add categories...')}}
+                            </button>
+                        </div>
+                        <x-transactions.add-categories-modal />
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <label>{{ __("Label") }} </label>
+                        </div>
+                        <div class="col-sm-9">
+                            @if (count($labels)>0)
+                                <select name="labels" id="labelpicker" onChange="UpdateLabels();" class="selectpicker" multiple>
+                                @foreach ($labels as $label)
+                                    <option value="{{ $label->id }}">{{ $label->name }}</option>
+                                @endforeach
+                                </select>
+                            @else
+                                <div class="alert alert-info">{{ __("There are no labels yet") }}</div>
+                            @endif
+                            <input type="hidden" name="hiddenLabels" id="hiddenlabels" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-12">
+                            <textarea name="notes" class="form-control" id="notes" style="height: 180px;" placeholder="{{__('Notes')}}"></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Register') }}</button>
@@ -104,6 +127,16 @@
                             .fail(function() {
                               $('#parent-categories-select').html("error: " + sURL);
                             });
+                }
+
+                function UpdateLabels() {
+                    out="";
+                    valores=$('#labelpicker').val();
+                    valores.forEach(function(entry) {
+                        out+= out=="" ? entry : '|' + entry;
+                    });
+                   $('#hiddenlabels').val(out);
+                   //console.log(out);
                 }
 
                 function AddCategory() {

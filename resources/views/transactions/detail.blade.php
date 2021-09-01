@@ -42,9 +42,22 @@
                         <td>{{ __("Category") }}</td>
                         <td>{{ $transaction->category->name ?? __("Uncategorized") }}</td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td>{{ __("Notes") }}</td>
                         <td>{{$transaction->notes}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __("Labels") }}</td>
+                        <td>
+                            @foreach ($transaction->labels as $label)
+                            <button type="button" class="btn" style="color: {{$label->foreground_color}}; background-color: {{$label->background_color}}">
+                                @if (isset($label->fontawesome_id))
+                                    <i class="fa {{$label->fontawesome_id}}"></i>
+                                @endif
+                                {{$label->name}}
+                            </button>
+                            @endforeach
+                        </td>
                     </tr>
                         {{--
                     <tr>
@@ -70,8 +83,8 @@
                             </button>
                             @endcan
                         </td>
-                    --}}
                     </tr>
+                --}}
                   </tbody>
                 </table>
                 <button type="button" class="btn btn-primary" onclick="location.href='{{route('resources.balance.detail', $transaction->resource_id)}}'">
