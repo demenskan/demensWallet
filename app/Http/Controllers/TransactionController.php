@@ -35,8 +35,9 @@ class TransactionController extends Controller
         //Origen y destino deben ser diferentes
         //cantidad es requerida y numerica
         //El usuario debe ser propietario de, o tener permisos de escritura en los 2 recursos
-        dd(request()->all());
         /*
+            dd(request()->all());
+         */
         $flash_messages= [];
         request()->validate([
             'amount' => 'required|numeric',
@@ -58,8 +59,9 @@ class TransactionController extends Controller
                 $resource_origin->balance=$resultant_balance;
             }
             $resource_origin->update();
+            $transaction_id=Str::uuid();
             Transaction::create([
-                'id' => Str::uuid(),
+                'id' => $transaction_id,
                 'resource_id' => request('origin'),
                 'alter_resource_id' => request('destiny'),
                 'amount' => request('amount'),
@@ -100,19 +102,18 @@ class TransactionController extends Controller
                 'operator_id' => auth()->user()->id,
                 'notes' => request('notes'),
             ]);
-            if (request('hiddenLabels')!="") {
-                $labels=explode("|",request('hiddenLabels'));
-                $transaction=Transaction::Find($transaction_id);
-                foreach ($labels as $label_id) {
-                    $label=Label::Find($label_id);
-                    $label->transactions()->attach($transaction);
-                }
+        }
+        if (request('hiddenLabels')!="") {
+            $labels=explode("|",request('hiddenLabels'));
+            $transaction=Transaction::Find($transaction_id);
+            foreach ($labels as $label_id) {
+                $label=Label::Find($label_id);
+                $label->transactions()->attach($transaction);
             }
         }
         $flash_messages[]= [ 'text' => __('Transaction created'), 'style' => 'success' ];
         session()->flash('flash-messages', $flash_messages);
         return back();
-         */
     }
 
     function find() {
