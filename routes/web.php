@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function (){
     Route::get('labels/capture', 'LabelController@create')->name('labels.capture');
     Route::get('labels/edit/{label}', 'LabelController@edit')->name('labels.edit');
     Route::post('labels/update', 'LabelController@update')->name('labels.update');
-
+    Route::get('labels/delete/confirm/{label}', 'LabelController@confirmDelete')->name('labels.delete.confirm');
+    Route::delete('labels/delete/destroy/{label}','LabelController@destroy')->name('labels.delete.destroy');
 
 });

@@ -40,10 +40,14 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4">
-                            <label for="fontawesome-id">{{ __("Fontawesome ID") }}</label>
+                            <label for="labelicon-id">{{ __("Label Icon") }}</label>
                         </div>
                         <div class="col-sm-8">
-                            <x-select-font-awesome />
+                            <select name="labelicon_id" id="labelicon-id" class="selectpicker" data-live-search="true" data-icon-base="fas" data-tick-icon="fa-check">
+                                @foreach ($labelicons as $labelicon)
+                                    <option data-icon="{{$labelicon->id}}">{{$labelicon->description}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">

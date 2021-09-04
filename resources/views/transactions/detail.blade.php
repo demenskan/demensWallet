@@ -51,8 +51,8 @@
                         <td>
                             @foreach ($transaction->labels as $label)
                             <button type="button" class="btn" style="color: {{$label->foreground_color}}; background-color: {{$label->background_color}}">
-                                @if (isset($label->fontawesome_id))
-                                    <i class="fa {{$label->fontawesome_id}}"></i>
+                                @if (isset($label->labelicon_id))
+                                    <i class="fa {{$label->labelicon_id}}"></i>
                                 @endif
                                 {{$label->name}}
                             </button>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Resource;
 use App\Transaction;
 use App\Label;
+use App\Labelicon;
 use Illuminate\Support\Str;
 
 class TransactionController extends Controller
@@ -117,7 +118,8 @@ class TransactionController extends Controller
     }
 
     function find() {
-        return view('transactions.find');
+        $labels=auth()->user()->labels;
+        return view('transactions.find', [ 'labels' => $labels ]);
     }
 
     function results() {

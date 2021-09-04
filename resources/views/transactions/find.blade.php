@@ -67,6 +67,18 @@
                               <input type="number" name="max_amount" class="form-control" id="max-amount" placeholder="{{__('Max Amount')}}" step="0.01">
                             </div>
                         </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <label for="labels">{{ __("Labels") }}</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select name="labels" id="labels" class="selectpicker" data-live-search="true" data-icon-base="fas" data-tick-icon="fa-check" multiple>
+                                @foreach ($labels as $label)
+                                    <option data-icon="{{$label->labelicon_id}}">{{$label->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                         <button type="submit" class="btn btn-primary btn-icon-split btn-lg">
                             <span class="icon"><i class="fa fa-search"></i></span>
                             <span class="text">{{ __('Search') }}</span>
@@ -81,6 +93,8 @@
     @endsection
 
     @section ('page-level-scripts')
+            <script src="{{ asset('js/bootstrap-select.js') }}"></script>
+
             <script>
                 function PopulateCategories(type) {
                     if (type=="ANY") {

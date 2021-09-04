@@ -79,9 +79,9 @@
                         </div>
                         <div class="col-sm-9">
                             @if (count($labels)>0)
-                                <select name="labels" id="labelpicker" onChange="UpdateLabels();" class="selectpicker" multiple>
+                                <select name="labels" id="labelpicker" onChange="UpdateLabels();" class="selectpicker" data-icon-base="fas" multiple>
                                 @foreach ($labels as $label)
-                                    <option value="{{ $label->id }}">{{ $label->name }}</option>
+                                    <option data-icon="{{$label->labelicon_id}}" value="{{ $label->id }}">{{ $label->name }}</option>
                                 @endforeach
                                 </select>
                             @else

@@ -19,7 +19,7 @@ class CreateLabelsTable extends Migration
             $table->string('name');
             $table->string('background_color')->nullable();
             $table->string('foreground_color')->nullable();
-            $table->string('fontawesome_id')->nullable();
+            $table->string('labelicon_id')->nullable();
             $table->timestamps();
         });
         DB::table('labels')->insert(
@@ -29,7 +29,7 @@ class CreateLabelsTable extends Migration
             'name' => 'viajes',
             'background_color' => '#dd00dd',
             'foreground_color' => '#445544',
-            'fontawesome_id' => 'fa-road'
+            'labelicon_id' => 'fa-road'
             ],
             [
             'id' => '0000-0000-0000-0000-0001',
@@ -37,7 +37,7 @@ class CreateLabelsTable extends Migration
             'names' => 'comida',
             'background_color' => '#d299dd',
             'foreground_color' => '#425CFF',
-            'fontawesome_id' => 'fa-tint'
+            'labelicon_id' => 'fa-tint'
             ]]
         );
     }

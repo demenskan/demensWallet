@@ -14,34 +14,36 @@
                   <thead>
                     <tr>
                       <th>{{ __('Text') }}</th>
-                      <th>{{ __('Font-Awesome class') }}</th>
+                      <th>{{ __('Label Icon') }}</th>
                       <th>{{ __('Foreground-color') }}</th>
                       <th>{{ __('Background-color') }}</th>
                       <th>{{ __('Preview') }}</th>
                       <th>{{ __('Edit') }}</th>
+                      <th>{{ __('Delete') }}</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>{{ __('Text') }}</th>
-                      <th>{{ __('Font-Awesome class') }}</th>
+                      <th>{{ __('Label Icon') }}</th>
                       <th>{{ __('Foreground-color') }}</th>
                       <th>{{ __('Background-color') }}</th>
                       <th>{{ __('Preview') }}</th>
                       <th>{{ __('Edit') }}</th>
+                      <th>{{ __('Delete') }}</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     @foreach ($labels as $label)
                     <tr>
                         <td>{{$label->name}}</td>
-                        <td>{{$label->fontawesome_id}}</td>
+                        <td>{{$label->labelicon_id}}</td>
                         <td>{{$label->foreground_color}}</td>
                         <td>{{$label->background_color}}</td>
                         <td>
                             <button type="button" class="btn" style="color: {{$label->foreground_color}}; background-color: {{$label->background_color}}">
-                                @if (isset($label->fontawesome_id))
-                                    <i class="fa {{$label->fontawesome_id}}"></i>
+                                @if (isset($label->labelicon_id))
+                                    <i class="fa {{$label->labelicon_id}}"></i>
                                 @endif
                                 {{$label->name}}
                             </button>
@@ -49,6 +51,11 @@
                         <td>
                             <button type="button" class="btn btn-primary" onclick="location.href='{{route('labels.edit',$label->id)}}'">
                                 <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="location.href='{{route('labels.delete.confirm',$label->id)}}'">
+                                <i class="fas fa-times"></i>
                             </button>
                         </td>
                     </tr>
