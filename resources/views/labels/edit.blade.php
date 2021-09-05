@@ -27,7 +27,7 @@
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">
-                      <i class="fas fa-image"></i> &nbsp;{{__('Edit Label')}}
+                      <i class="fa fa-tag"></i> &nbsp;{{__('Edit Label')}}
                   </h6>
                 </div>
                 <div class="card-body">
@@ -43,7 +43,7 @@
                             <label for="labelicon-id">{{ __("Label Icon") }}</label>
                         </div>
                         <div class="col-sm-8">
-                            <select name="labelicon_id" id="labelicon-id" class="selectpicker" data-live-search="true" data-icon-base="fas" data-tick-icon="fa-check">
+                            <select name="labelicon_id" id="labelicon-id" class="selectpicker" data-live-search="true" data-icon-base="fa" data-tick-icon="fa-check">
                                 @foreach ($labelicons as $labelicon)
                                     <option data-icon="{{$labelicon->id}}" {{ $label->labelicon_id==$labelicon->id ? "selected=\"selected\"" : "" }}>
                                         {{$labelicon->description}}

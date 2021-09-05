@@ -15,10 +15,11 @@ class CreateLabeliconsTable extends Migration
     {
         Schema::create('labelicons', function (Blueprint $table) {
             $table->string('id');
-            $table->string('description')->nullable();
+            $table->string('category')->nullable();
             $table->timestamps();
         });
-        DB::table('labelicons')->insert(
+       /*
+        * DB::table('labelicons')->insert(
             [
                     [ 'id' => 'fa-glass', 'description' => 'fa-glass'],
                     [ 'id' => 'fa-music', 'description' => 'fa-music'],
@@ -525,7 +526,7 @@ class CreateLabeliconsTable extends Migration
                     [ 'id' => 'fa-bomb', 'description' => 'fa-bomb'],
 
             ]
-        );
+        );*/
     }
 
     /**

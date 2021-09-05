@@ -1,0 +1,339 @@
+american-sign-language-interpreting,Accebility
+assistive-listening-systems,Accebility
+audio-description,Accebility
+blind,Accebility
+braille,Accebility
+closed-captioning,Accebility
+deaf,Accebility
+low-vision,Accebility
+phone-volume,Accebility
+question-circle,Accebility
+sign-language,Accebility
+tty,Accebility
+universal-access,Accebility
+wheelchair,Accebility
+bell,Alert
+bell-slash,Alert
+exclamation,Alert
+exclamation-circle,Alert
+exclamation-triangle,Alert
+radiation,Alert
+radiation-alt,Alert
+skull-crossbones,Alert
+cat,Animals
+crow,Animals
+dog,Animals
+dove,Animals
+dragon,Animals
+feather,Animals
+feather-alt,Animals
+fish,Animals
+frog,Animals
+hippo,Animals
+horse,Animals
+horse-head,Animals
+kiwi-bird,Animals
+otter,Animals
+paw,Animals
+spider,Animals
+angle-double-down,Arrows
+angle-double-left,Arrows
+angle-double-right,Arrows
+angle-double-up,Arrows
+angle-down,Arrows
+angle-left,Arrows
+angle-right,Arrows
+angle-up,Arrows
+arrow-alt-circle-down,Arrows
+arrow-alt-circle-left,Arrows
+arrow-alt-circle-right,Arrows
+arrow-alt-circle-up,Arrows
+arrow-circle-down,Arrows
+arrow-circle-left,Arrows
+arrow-circle-right,Arrows
+arrow-circle-up,Arrows
+arrow-down,Arrows
+arrow-left,Arrows
+arrow-right,Arrows
+arrow-up,Arrows
+arrows-alt,Arrows
+arrows-alt-h,Arrows
+arrows-alt-v,Arrows
+caret-down,Arrows
+caret-left,Arrows
+caret-right,Arrows
+caret-square-down,Arrows
+caret-square-left,Arrows
+caret-square-right,Arrows
+caret-square-up,Arrows
+caret-up,Arrows
+cart-arrow-down,Arrows
+chart-line,Arrows
+chevron-circle-down,Arrows
+chevron-circle-left,Arrows
+chevron-circle-right,Arrows
+chevron-circle-up,Arrows
+chevron-down,Arrows
+chevron-left,Arrows
+chevron-right,Arrows
+chevron-up,Arrows
+cloud-download-alt,Arrows
+cloud-upload-alt,Arrows
+compress-alt,Arrows
+compress-arrows-alt,Arrows
+download,Arrows
+exchange-alt,Arrows
+expand-alt,Arrows
+expand-arrows-alt,Arrows
+external-link-alt,Arrows
+external-link-square-alt,Arrows
+hand-point-down,Arrows
+hand-point-left,Arrows
+hand-point-right,Arrows
+hand-point-up,Arrows
+hand-pointer,Arrows
+history,Arrows
+level-down-alt,Arrows
+level-up-alt,Arrows
+location-arrow,Arrows
+long-arrow-alt-down,Arrows
+long-arrow-alt-left,Arrows
+long-arrow-alt-right,Arrows
+long-arrow-alt-up,Arrows
+mouse-pointer,Arrows
+play,Arrows
+random,Arrows
+recycle,Arrows
+redo,Arrows
+redo-alt,Arrows
+reply,Arrows
+reply-all,Arrows
+retweet,Arrows
+share,Arrows
+share-square,Arrows
+sign-in-alt,Arrows
+sign-out-alt,Arrows
+sort,Arrows
+sort-alpha-down,Arrows
+sort-alpha-down-alt,Arrows
+sort-alpha-up,Arrows
+sort-alpha-up-alt,Arrows
+sort-amount-down,Arrows
+sort-amount-down-alt,Arrows
+sort-amount-up,Arrows
+sort-amount-up-alt,Arrows
+sort-down,Arrows
+sort-numeric-down,Arrows
+sort-numeric-down-alt,Arrows
+sort-numeric-up,Arrows
+sort-numeric-up-alt,Arrows
+sort-up,Arrows
+sync,Arrows
+sync-alt,Arrows
+text-height,Arrows
+text-width,Arrows
+undo,Arrows
+undo-alt,Arrows
+upload,Arrows
+audio-description,Audio & Video
+backward,Audio & Video
+broadcast-tower,Audio & Video
+circle,Audio & Video
+closed-captioning,Audio & Video
+compress,Audio & Video
+compress-alt,Audio & Video
+compress-arrows-alt,Audio & Video
+eject,Audio & Video
+expand,Audio & Video
+expand-alt,Audio & Video
+expand-arrows-alt,Audio & Video
+fast-backward,Audio & Video
+fast-forward,Audio & Video
+file-audio,Audio & Video
+file-video,Audio & Video
+film,Audio & Video
+forward,Audio & Video
+headphones,Audio & Video
+microphone,Audio & Video
+microphone-alt,Audio & Video
+microphone-alt-slash,Audio & Video
+microphone-slash,Audio & Video
+music,Audio & Video
+pause,Audio & Video
+pause-circle,Audio & Video
+phone-volume,Audio & Video
+photo-video,Audio & Video
+play,Audio & Video
+play-circle,Audio & Video
+podcast,Audio & Video
+random,Audio & Video
+redo,Audio & Video
+redo-alt,Audio & Video
+rss,Audio & Video
+rss-square,Audio & Video
+step-backward,Audio & Video
+step-forward,Audio & Video
+stop,Audio & Video
+stop-circle,Audio & Video
+sync,Audio & Video
+sync-alt,Audio & Video
+tv,Audio & Video
+undo,Audio & Video
+undo-alt,Audio & Video
+video,Audio & Video
+volume-down,Audio & Video
+volume-mute,Audio & Video
+volume-off,Audio & Video
+volume-up,Audio & Video
+air-freshener,Automotive
+ambulance,Automotive
+bus,Automotive
+bus-alt,Automotive
+car,Automotive
+car-alt,Automotive
+car-battery,Automotive
+car-crash,Automotive
+car-side,Automotive
+caravan,Automotive
+charging-station,Automotive
+gas-pump,Automotive
+motorcycle,Automotive
+oil-can,Automotive
+shuttle-van,Automotive
+tachometer-alt,Automotive
+taxi,Automotive
+trailer,Automotive
+truck,Automotive
+truck-monster,Automotive
+truck-pickup,Automotive
+apple-alt,Autumn
+campground,Autumn
+cloud-sun,Autumn
+drumstick-bite,Autumn
+football-ball,Autumn
+hiking,Autumn
+mountain,Autumn
+tractor,Autumn
+tree,Autumn
+wind,Autumn
+wine-bottle,Autumn
+beer,Beverage
+blender,Beverage
+cocktail,Beverage
+coffee,Beverage
+flask,Beverage
+glass-cheers,Beverage
+glass-martini,Beverage
+glass-martini-alt,Beverage
+glass-whiskey,Beverage
+mug-hot,Beverage
+wine-bottle,Beverage
+wine-glass,Beverage
+wine-glass-alt,Beverage
+archway,Buildings
+building,Buildings
+campground,Buildings
+church,Buildings
+city,Buildings
+clinic-medical,Buildings
+dungeon,Buildings
+gopuram,Buildings
+home,Buildings
+hospital,Buildings
+hospital-alt,Buildings
+hospital-user,Buildings
+hotel,Buildings
+house-damage,Buildings
+igloo,Buildings
+industry,Buildings
+kaaba,Buildings
+landmark,Buildings
+monument,Buildings
+mosque,Buildings
+place-of-worship,Buildings
+school,Buildings
+store,Buildings
+store-alt,Buildings
+synagogue,Buildings
+torii-gate,Buildings
+university,Buildings
+vihara,Buildings
+warehouse,Buildings
+address-book,Business
+address-card,Business
+archive,Business
+balance-scale,Business
+balance-scale-left,Business
+balance-scale-right,Business
+birthday-cake,Business
+book,Business
+briefcase,Business
+building,Business
+bullhorn,Business
+bullseye,Business
+business-time,Business
+calculator,Business
+calendar,Business
+calendar-alt,Business
+certificate,Business
+chart-area,Business
+chart-bar,Business
+chart-line,Business
+chart-pie,Business
+city,Business
+clipboard,Business
+coffee,Business
+columns,Business
+compass,Business
+copy,Business
+copyright,Business
+cut,Business
+edit,Business
+envelope,Business
+envelope-open,Business
+envelope-square,Business
+eraser,Business
+fax,Business
+file,Business
+file-alt,Business
+folder,Business
+folder-minus,Business
+folder-open,Business
+folder-plus,Business
+glasses,Business
+globe,Business
+highlighter,Business
+industry,Business
+landmark,Business
+laptop-house,Business
+marker,Business
+paperclip,Business
+paste,Business
+pen,Business
+pen-alt,Business
+pen-fancy,Business
+pen-nib,Business
+pen-square,Business
+pencil-alt,Business
+percent,Business
+phone,Business
+phone-alt,Business
+phone-slash,Business
+phone-square,Business
+phone-square-alt,Business
+phone-volume,Business
+print,Business
+project-diagram,Business
+registered,Business
+save,Business
+sitemap,Business
+socks,Business
+sticky-note,Business
+stream,Business
+table,Business
+tag,Business
+tags,Business
+tasks,Business
+thumbtack,Business
+trademark,Business
+wallet,Business
