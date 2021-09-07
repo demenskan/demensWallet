@@ -45,7 +45,9 @@
                         <div class="col-sm-8">
                             <select name="labelicon_id" id="labelicon-id" class="selectpicker" data-live-search="true" data-icon-base="fas" data-tick-icon="fa-check">
                                 @foreach ($labelicons as $labelicon)
-                                    <option data-icon="{{$labelicon->id}}">{{$labelicon->description}}</option>
+                                    <option data-icon="{{$labelicon->id}}">
+                                        {{$labelicon->id}}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

@@ -46,7 +46,7 @@
                             <select name="labelicon_id" id="labelicon-id" class="selectpicker" data-live-search="true" data-icon-base="fa" data-tick-icon="fa-check">
                                 @foreach ($labelicons as $labelicon)
                                     <option data-icon="{{$labelicon->id}}" {{ $label->labelicon_id==$labelicon->id ? "selected=\"selected\"" : "" }}>
-                                        {{$labelicon->description}}
+                                        {{$labelicon->id}}
                                     </option>
                                 @endforeach
                             </select>
