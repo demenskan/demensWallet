@@ -3,6 +3,3 @@
           <i class="fas fa-fw fa-tags"></i>
           <span>{{ __('Labels') }}</span></a>
       </li>
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
