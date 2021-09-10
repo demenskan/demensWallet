@@ -56,5 +56,6 @@ Route::middleware('auth')->group(function (){
     Route::get('labels/delete/confirm/{label}', 'LabelController@confirmDelete')->name('labels.delete.confirm');
     Route::delete('labels/delete/destroy/{label}','LabelController@destroy')->name('labels.delete.destroy');
     Route::get('reports', 'ReportController@index')->name('reports.index');
+    Route::get('reports/incomes', 'ReportController@incomes')->name('reports.incomes');
 
 });
