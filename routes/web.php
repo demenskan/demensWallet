@@ -22,6 +22,15 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 //Manera alternativa de usar el middleware de autenticacion
 Route::middleware('auth')->group(function (){
+    //Google OAuth
+/*
+    Route::get("google",function(){
+                            Return view(‘googleAuth’);
+                        });
+    Route::get('auth/google', 'Auth\LoginController@redirectToGoogle');
+    Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
+    //
+*/
     Route::get('/user/profile', function() {})->name('user.profile.show');
 
     Route::get('/transaction/capture', 'TransactionController@capture')->name('transaction.capture');
