@@ -31,7 +31,9 @@ Route::middleware('auth')->group(function (){
     Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
     //
 */
-    Route::get('/user/profile', function() {})->name('user.profile.show');
+    Route::get('user/profile', 'UserController@profile')->name('user.profile.show');
+    Route::post('user/profile/store', 'UserController@store')->name('user.profile.store');
+    Route::post('user/profile/changepassword', 'UserController@changepassword')->name('user.profile.changepassword');
 
     Route::get('/transaction/capture', 'TransactionController@capture')->name('transaction.capture');
     Route::post('/transaction/store', 'TransactionController@store')->name('transaction.store');
