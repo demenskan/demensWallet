@@ -47,8 +47,8 @@
                             <input type="text" name="name" class="form-control" id="name" placeholder="{{__('Display Name')}}" value="{{ $user->name }}">
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Submit changes') }}</button>
                   </form>
-                  <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Submit changes') }}</button>
                 </div> <!--card body-->
               </div> <!--card-->
               <div class="card shadow mb-4">
@@ -76,8 +76,8 @@
                           <input type="password" name="password2" class="form-control" id="pass2" placeholder="{{__('Confirm new password')}}">
                       </div>
                     </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Submit changes') }}</button>
                   </form>
-                  <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Submit changes') }}</button>
                 </div> <!--card body-->
               </div> <!--card-->
             </div> <!--column-->
