@@ -23,6 +23,9 @@ class UserController extends Controller
         $user->currency_id=request('currency');
         $user->name=request('name');
         $user->update();
+        session()->flash("div_class", "success");
+        session()->flash("message", __("User settings updated"));
+        return redirect()->route("home");
 
     }
 
