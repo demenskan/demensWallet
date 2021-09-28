@@ -28,6 +28,8 @@ If you want to see the demo, you can check it out <a href="https://githubpages.c
 </ul>
 NOTE: In the future versions, I'll put everything on a container in order to ease the installation
 
+Bases from <a href="https://diarioprogramador.com/aprende-como-realizar-deploy-de-tu-proyecto-en-laravel-en-un-vps-desde-cero-te-lo-ensenamos-de-manera-corta-y-precisa/"> here </a>
+
 <h3>How to install it</h3>
 <div class="">
     NOTE: The instructions are based from <a href="https://devmarketer.io/learn/setup-laravel-project-cloned-github-com/">this site</a> to make it work on a fresh cloned repository, and everything is made with a console. If you are running on windows, you can use the git console.
