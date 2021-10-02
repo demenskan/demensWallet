@@ -5,6 +5,9 @@
             <h1 class="h3 mb-0 text-gray-800">{{ __("Dashboard") }}</h1>
             {{--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
           </div>
+            @if (Session::has('message'))
+                <div class="alert alert-{{Session::get('div_class')}}">{{Session::get('message')}}</div>
+            @endif
 
           <!-- Content Row -->
           <div class="row">

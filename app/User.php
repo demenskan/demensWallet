@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -71,4 +71,16 @@ class User extends Authenticatable
         return $this->hasMany('App\Label');
     }
 
+    public function setPasswordAttribute($value) {
+        //Mutator which encrypts the new password
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function getAvatarAttribute() {
+        //accesor to see wether or not to send the default image
+        if ($this->attributes['avatar'])
+            return asset('images/custom/'.$this->attributes['avatar']);
+        else
+            return asset('images/default.jpeg');
+    }
 }

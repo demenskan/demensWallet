@@ -13,8 +13,19 @@
                   </h6>
                 </div>
                 <div class="card-body">
-                  <form class="user" action="{{route('user.profile.store')}}" method="POST">
+                  <form class="user" action="{{route('user.profile.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
+                    <div class="mb-4">
+                        <img class="rounded-circle" src="{{$user->avatar}}" />
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="avatar" />
+                        @error('avatar')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+
                     <div class="form-group row">
                       <div class="col-sm-2 mb-3 mb-sm-0">
                           <label for='language'>{{__('Display Language')}}</label>
@@ -62,18 +73,24 @@
                     @csrf
                     <div class="form-group row">
                       <div class="col-sm-2 mb-3 mb-sm-0">
-                          <label for='pass1'>{{__('New password')}}</label>
+                          <label for='password'>{{__('New password')}}</label>
                       </div>
                       <div class="col-sm-10">
-                          <input type="password" name="password1" class="form-control" id="pass1" placeholder="{{__('Type password')}}">
+                          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="{{__('Enter a new password')}}">
+                          @error('password')
+                              <div class="invalid-feedback">{{$message}}</div>
+                          @enderror
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-2 mb-3 mb-sm-0">
-                          <label for='pass2'>{{__('Confirm new password')}}</label>
+                          <label for='password_confirmation'>{{__('Confirm new password')}}</label>
                       </div>
                       <div class="col-sm-10">
-                          <input type="password" name="password2" class="form-control" id="pass2" placeholder="{{__('Confirm new password')}}">
+                          <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid  @enderror" id="password_confirmation" placeholder="{{__('Confirm new password')}}">
+                          @error('password')
+                              <div class="invalid-feedback">{{$message}}</div>
+                          @enderror
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Submit changes') }}</button>

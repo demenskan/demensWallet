@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Currency;
 use App\Language;
 
@@ -17,20 +18,39 @@ class UserController extends Controller
     }
 
     public function store() {
-        dd(request());
+        $inputs=request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'avatar' => ['file:png,jpeg,gif'],
+            'currency_id' => ['required'],
+            'language_id' => ['required']
+        ]);
         $user=auth()->user();
-        $user->language_id=request('language');
-        $user->currency_id=request('currency');
-        $user->name=request('name');
-        $user->update();
+        if (request('avatar')) {
+            $path=request('avatar')->store('public/images/custom');
+            $inputs['avatar']= substr($path,21);
+        }
+        $user->update($inputs);
+        dd($inputs);
+
+        /*
         session()->flash("div_class", "success");
         session()->flash("message", __("User settings updated"));
         return redirect()->route("home");
-
+         */
     }
 
     public function changepassword() {
-        echo ('pass xchange');
+        $inputs=request()->validate([
+            'password' => ['min:5', 'max:255', 'confirmed' ]
+        ]);
+        /*
+        dd($inputs);
+         */
+        $inputs['password']=Hash::make($inputs['password']);
+        $user=auth()->user()->update($inputs);
+        session()->flash("div_class", "success");
+        session()->flash("message", __("User password updated"));
+        return redirect()->route("home");
     }
 
 

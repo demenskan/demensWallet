@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function (){
     //
 */
     Route::get('user/profile', 'UserController@profile')->name('user.profile.show');
-    Route::post('user/profile/store', 'UserController@store')->name('user.profile.store');
+    Route::put('user/profile/store', 'UserController@store')->name('user.profile.store');
     Route::post('user/profile/changepassword', 'UserController@changepassword')->name('user.profile.changepassword');
 
     Route::get('transaction/capture', 'TransactionController@capture')->name('transaction.capture');
