@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar'
+        'name', 'email', 'password', 'avatar', 'currency_id', 'language_id'
     ];
 
     /**
@@ -79,7 +79,7 @@ class User extends Authenticatable
     public function getAvatarAttribute() {
         //accesor to see wether or not to send the default image
         if ($this->attributes['avatar'])
-            return asset('images/custom/'.$this->attributes['avatar']);
+            return asset('storage/images/custom/'.$this->attributes['avatar']);
         else
             return asset('images/default.jpeg');
     }

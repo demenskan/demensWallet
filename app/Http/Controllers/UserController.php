@@ -18,6 +18,9 @@ class UserController extends Controller
     }
 
     public function store() {
+/*
+    dd(request());
+ */
         $inputs=request()->validate([
             'name' => ['required', 'string', 'max:255'],
             'avatar' => ['file:png,jpeg,gif'],
@@ -29,14 +32,14 @@ class UserController extends Controller
             $path=request('avatar')->store('public/images/custom');
             $inputs['avatar']= substr($path,21);
         }
-        $user->update($inputs);
-        dd($inputs);
-
         /*
+        dd($inputs);
+         */
+        $user->update($inputs);
+
         session()->flash("div_class", "success");
         session()->flash("message", __("User settings updated"));
         return redirect()->route("home");
-         */
     }
 
     public function changepassword() {

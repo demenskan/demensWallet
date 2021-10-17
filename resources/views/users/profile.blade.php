@@ -31,7 +31,7 @@
                           <label for='language'>{{__('Display Language')}}</label>
                       </div>
                       <div class="col-sm-10">
-                          <select name="language" class="custom-select custom-select-sm form-control form-control-sm">
+                          <select name="language_id" class="custom-select custom-select-sm form-control form-control-sm">
                               @foreach ($languages as $language)
                                   <option value="{{ $language->id }}" {{ $language->id==$user->language_id ? "selected=\"selected\"" : "" }}>{{ $language->original_name }}</option>
                               @endforeach
@@ -43,7 +43,7 @@
                           <label for='currency'>{{__('Default currency')}}</label>
                       </div>
                       <div class="col-sm-10">
-                          <select name="currency" class="custom-select custom-select-sm form-control form-control-sm">
+                          <select name="currency_id" class="custom-select custom-select-sm form-control form-control-sm">
                             @foreach ($currencies as $currency)
                                 <option value="{{ $currency->id }}" {{ $currency->id==$user->currency_id ? "selected=\"selected\"" : "" }}>{{ $currency->full_name }}</option>
                             @endforeach
