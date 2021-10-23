@@ -22,7 +22,8 @@ class UserController extends Controller
     dd(request());
  */
         $inputs=request()->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' =>['string', 'max:255'],
             'avatar' => ['file:png,jpeg,gif'],
             'currency_id' => ['required'],
             'language_id' => ['required']

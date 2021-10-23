@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'currency_id', 'language_id'
+        'first_name', 'last_name', 'login_method', 'email', 'password', 'avatar', 'currency_id', 'language_id'
     ];
 
     /**
@@ -82,5 +82,9 @@ class User extends Authenticatable
             return asset('storage/images/custom/'.$this->attributes['avatar']);
         else
             return asset('images/default.jpeg');
+    }
+
+    public function getFullNameAttribute() {
+        return (isset($this->attributes['last_name']) ? $this->attributes['last_name'].", ".$this->attributes['first_name'] : $this->attributes['first_name'] );
     }
 }

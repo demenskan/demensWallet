@@ -15,7 +15,9 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name')->nullable();
+            $table->string('login_method')->nullable();
             $table->text('avatar')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -30,7 +32,8 @@ class CreateUsersTable extends Migration
         });
         DB::table('users')->insert([
             'id' => '0000-0000-0000-0000-0000',
-            'name' => 'Administrator',
+            'first_name' => 'Administrator',
+            'last_name' => 'Perron',
             'email' => 'admin@localhost',
             'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret  
             'profile' => 'SU',
@@ -39,7 +42,8 @@ class CreateUsersTable extends Migration
         ],
         [
             'id' => '0000-0000-0000-0000-0001',
-            'name' => 'Godinez',
+            'first_name' => 'Godo',
+            'last_name' => 'Godinez',
             'email' => 'godinez@localhost',
             'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret  
             'profile' => 'AO',

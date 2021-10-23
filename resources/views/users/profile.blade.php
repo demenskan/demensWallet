@@ -52,10 +52,18 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-2 mb-3 mb-sm-0">
-                          <label for='name'>{{__('Display Name')}}</label>
+                          <label for='name'>{{__('First Name')}}*</label>
                         </div>
                         <div class="col-sm-10 mb-3 mb-sm-0">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="{{__('Display Name')}}" value="{{ $user->name }}">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="{{__('First Name')}}" value="{{ $user->first_name }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                          <label for='name'>{{__('Last Name')}}</label>
+                        </div>
+                        <div class="col-sm-10 mb-3 mb-sm-0">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="{{__('Last Name')}}" value="{{ $user->last_name }}">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">{{ __('Submit changes') }}</button>
