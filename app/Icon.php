@@ -22,7 +22,7 @@ class Icon extends Model
         if ($this->type=='standard')
             return '/images/freepik/'.$this->filename;
         else
-            return '/images/custom/'.$this->filename;
+            return '/storage/images/custom/'.$this->filename;
         //return $this->hasMany('App\Icon');
     }
 }

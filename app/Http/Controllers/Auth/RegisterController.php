@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\UserAppliance;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -50,27 +52,46 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'reason' => ['required', 'string'],
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
+     * Handle a registration request for the application.
+     * (redefines the method posted at vendor/laravel/ui/auth-backend/RegistersUsers.php)
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    protected function create(array $data)
+    //public function register(Request $request)
+    public function register()
     {
-        dd($data);
-        /*
-          return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-         */
+       $appliance_data=$this->validator(request()->all())->validate();
+       $appliance_id=Str::uuid();
+            UserAppliance::create([
+                'id' => $appliance_id,
+                'first_name' => $appliance_data['firstname'],
+                'last_name' => $appliance_data['lastname'],
+                'email' => $appliance_data['email'],
+                'login_method' => "EMAIL",
+                'reason_to_use' => $appliance_data['reason'],
+            ]);
+
+        return view("auth.appliance-registered");
+
+        /*event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+                    ? new Response('', 201)
+                    : redirect($this->redirectPath());*/
+
     }
 }

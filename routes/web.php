@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });
  */
-Auth::routes();
+Auth::routes(); // Routes defined at vendor/laravel/ui/src/AuthRouteMethods.php
+
 
 Route::get('/', 'HomeController@index')->name('home');
 //Manera alternativa de usar el middleware de autenticacion
@@ -68,5 +69,7 @@ Route::middleware('auth')->group(function (){
     Route::delete('labels/delete/destroy/{label}','LabelController@destroy')->name('labels.delete.destroy');
     Route::get('reports', 'ReportController@index')->name('reports.index');
     Route::get('reports/incomes', 'ReportController@incomes')->name('reports.incomes');
+    Route::get('appliances/manage', 'UserAppliancesController@manage')->name('appliances.manage');
+    Route::post('appliances/action', 'UserAppliancesController@action')->name('appliances.action');
 
 });

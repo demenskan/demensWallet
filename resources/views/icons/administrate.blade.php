@@ -28,7 +28,7 @@
                   <tbody>
                     @foreach ($icons as $icon)
                     <tr>
-                        <td><img src="/images/custom/{{ $icon->filename}}" width="32" height="32" /></td>
+                        <td><img src="{{ $icon->full_path }}" width="32" height="32" /></td>
                         <td>{{$icon->tag}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" onclick="location.href='{{route('icons.edit',$icon->id)}}'">

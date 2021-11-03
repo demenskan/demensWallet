@@ -35,7 +35,7 @@
                     @csrf
                     <div class="form-group row">
                         <div class="col-sm-2">
-                            <img src="/images/custom/{{ $icon->filename}}" width="32" height="32" />
+                            <img src="{{ $icon->full_path}}" width="32" height="32" />
                         </div>
                         <div class="col-sm-10">
                             <input type="text" name="icon_tag" class="form-control" id="icon-tag" placeholder="{{__('Icon Tag')}}" value="{{$icon->tag}}">
