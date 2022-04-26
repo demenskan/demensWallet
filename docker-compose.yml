@@ -1,0 +1,58 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: demenskan
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: demenswallet2
+    container_name: demenswallet2-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - demenswallet2
+
+  db:
+    image: mysql:5.7
+    command: [--ignore-db-dir=lost+found]
+    container_name: demenswallet2-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - /etc/localtime:/etc/localtime:ro
+      #- demenswallet2-data:/var/lib/mysql/data prueba para ver si es esto lo que causa que truene
+      - demenswallet2-data:/var/lib/mysql
+    networks:
+      - demenswallet2
+
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: demenswallet2-nginx
+    restart: unless-stopped
+    ports:
+      - 8088:80
+    volumes:
+      - ./:/var/www
+      - /etc/localtime:/etc/localtime:ro
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - demenswallet2
+
+networks:
+  demenswallet2:
+    driver: bridge
+
+volumes:
+  demenswallet2-data:
