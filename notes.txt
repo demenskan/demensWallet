@@ -1,0 +1,8 @@
+INSTALLATION NOTES
+- Copy .env.example into .env
+- Set DB_DATABASE, DB_USERNAME, DB_PASSWORD environment variables
+- Run docker compose up -d
+- Enter demensWallet-app container and run migration
+    composer install
+    php artisan key:generate
+    php artisan migrate

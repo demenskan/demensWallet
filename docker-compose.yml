@@ -1,3 +1,4 @@
+# reference: https://www.digitalocean.com/community/tutorials/how-to-containerize-a-laravel-application-for-development-with-docker-compose-on-ubuntu-18-04
 version: "3.7"
 services:
   app:
@@ -7,20 +8,18 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: demenswallet2
-    container_name: demenswallet2-app
+    image: demenswallet:0.1
+    container_name: demenswallet-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www
-      - /etc/localtime:/etc/localtime:ro
     networks:
-      - demenswallet2
+      - demenswallet
 
   db:
     image: mysql:5.7
-    command: [--ignore-db-dir=lost+found]
-    container_name: demenswallet2-db
+    container_name: demenswallet-db
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
@@ -31,28 +30,25 @@ services:
       SERVICE_NAME: mysql
     volumes:
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
-      - /etc/localtime:/etc/localtime:ro
-      #- demenswallet2-data:/var/lib/mysql/data prueba para ver si es esto lo que causa que truene
-      - demenswallet2-data:/var/lib/mysql
+      - demenswallet-db-data:/var/lib/mysql
     networks:
-      - demenswallet2
+      - demenswallet
 
   nginx:
     image: nginx:1.17-alpine
-    container_name: demenswallet2-nginx
+    container_name: demenswallet-nginx
     restart: unless-stopped
     ports:
-      - 8088:80
+      - 8000:80
     volumes:
       - ./:/var/www
-      - /etc/localtime:/etc/localtime:ro
       - ./docker-compose/nginx:/etc/nginx/conf.d
     networks:
-      - demenswallet2
+      - demenswallet
 
 networks:
-  demenswallet2:
+  demenswallet:
     driver: bridge
 
 volumes:
-  demenswallet2-data:
+  demenswallet-db-data:

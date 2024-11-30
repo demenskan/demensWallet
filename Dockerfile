@@ -1,11 +1,10 @@
-# basado en https://www.digitalocean.com/community/tutorials/how-to-install-and-set-up-laravel-with-docker-compose-on-ubuntu-20-04-es
 FROM php:7.4-fpm
 
-# Argumentos definidon en el docker-compose.yml
+# Arguments defined in docker-compose.yml
 ARG user
 ARG uid
 
-# Instalar dependencias de sistema
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -15,30 +14,23 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
-# limpiar cache
+# Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Instalar extensiones php
+# Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-# obtiene el composer mas reciente
+# Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Crea usuario de sistema para correr composer y artisan
+# Create system user to run Composer and Artisan Commands
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
-# set directorio de trabajo
+# Set working directory
 WORKDIR /var/www
 
-
-# Agregado para que actualize el composer y  lo corra
-COPY . .
-RUN composer update && composer install --no-scripts --no-autoloader
-# Agregado para que genere la llave de app de Laravel
-#RUN php artisan key:generate
-#RUN php artisan migrate
-
 USER $user
+
 
